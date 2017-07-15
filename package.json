@@ -1,0 +1,44 @@
+{
+  "name": "react-beforeunload",
+  "version": "1.0.0",
+  "description": "React component which listens to `beforeunload` on the window when mounted.",
+  "main": "lib/Beforeunload.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "babel --out-dir lib src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobbuck/react-beforeunload.git"
+  },
+  "keywords": [
+    "beforeunload",
+    "component",
+    "event",
+    "onbeforeunload",
+    "react",
+    "unload",
+    "window"
+  ],
+  "author": "Jacob Buck <buck.jacob@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacobbuck/react-beforeunload/issues"
+  },
+  "homepage": "https://github.com/jacobbuck/react-beforeunload#readme",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
+    "react": "^15.6.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
