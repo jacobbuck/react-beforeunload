@@ -1,6 +1,6 @@
 {
   "name": "react-beforeunload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component which listens to `beforeunload` on the window when mounted.",
   "main": "lib/Beforeunload.js",
   "directories": {
