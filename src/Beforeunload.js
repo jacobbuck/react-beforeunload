@@ -30,7 +30,8 @@ class Beforeunload extends React.Component {
   };
 
   render() {
-    return this.props.children;
+    const { children = null } = this.props;
+    return children;
   }
 }
 
