@@ -34,4 +34,4 @@ class Beforeunload extends React.Component {
   }
 }
 
-export default OuterClick;
+export default Beforeunload;
