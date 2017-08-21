@@ -1,6 +1,6 @@
 {
   "name": "react-beforeunload",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React component which listens to `beforeunload` on the window when mounted.",
   "main": "lib/Beforeunload.js",
   "files": [
@@ -34,7 +34,7 @@
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "react": "^15.6.0"
+    "react": ">=15.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
