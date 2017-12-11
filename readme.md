@@ -13,7 +13,7 @@ React component which listens to `beforeunload` on the window when mounted.
 ### Display a dialog box with custom message:
 
 ```jsx
-<Beforeunload onBeforeunload={() => "You'll loose your data!"} />
+<Beforeunload onBeforeunload={() => "You'll lose your data!"} />
 ```
 
 > Some browsers display the returned string in the dialog box, others display a fixed message.
