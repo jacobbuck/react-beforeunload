@@ -1,38 +1,46 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import { useEffect, useRef } from 'react';
 
-class Beforeunload extends React.Component {
-  static propTypes = {
-    children: PropTypes.any,
-    onBeforeunload: PropTypes.func.isRequired,
-  };
+const useBeforeunload = handler => {
+  const handerRef = useRef(handler);
 
-  componentDidMount() {
-    window.addEventListener('beforeunload', this.handleBeforeunload);
-  }
+  useEffect(() => {
+    handerRef.current = handler;
+  }, [handler]);
 
-  componentWillUnmount() {
-    window.removeEventListener('beforeunload', this.handleBeforeunload);
-  }
+  useEffect(() => {
+    const handleBeforeunload = event => {
+      let returnValue;
 
-  handleBeforeunload = event => {
-    const { onBeforeunload } = this.props;
-    let returnValue;
+      if (handerRef.current) {
+        returnValue = handerRef.current(event);
+      }
 
-    if (onBeforeunload) {
-      returnValue = onBeforeunload(event);
-    }
+      if (typeof returnValue === 'string') {
+        event.returnValue = returnValue;
+        return returnValue;
+      }
+    };
 
-    if (typeof returnValue === 'string') {
-      event.returnValue = returnValue;
-      return returnValue;
-    }
-  };
+    window.addEventListener('beforeunload', handleBeforeunload);
 
-  render() {
-    const { children = null } = this.props;
-    return children;
-  }
-}
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeunload);
+    };
+  }, []);
+};
+
+const Beforeunload = props => {
+  const { children = null, onBeforeunload } = props;
+
+  useBeforeunload(onBeforeunload);
+
+  return children;
+};
+
+Beforeunload.propTypes = {
+  children: PropTypes.any,
+  onBeforeunload: PropTypes.func.isRequired,
+};
 
 export default Beforeunload;
