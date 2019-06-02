@@ -10,7 +10,7 @@
     "build": "rollup -c",
     "lint": "eslint src/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -53,5 +53,10 @@
     "prettier": "^1.17.1",
     "rollup": "^1.13.1",
     "rollup-plugin-babel": "^4.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
