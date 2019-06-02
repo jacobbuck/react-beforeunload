@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
-const useBeforeunload = handler => {
+export const useBeforeunload = handler => {
   const handerRef = useRef(handler);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const useBeforeunload = handler => {
   }, []);
 };
 
-const Beforeunload = props => {
+export const Beforeunload = props => {
   const { children = null, onBeforeunload } = props;
 
   useBeforeunload(onBeforeunload);
