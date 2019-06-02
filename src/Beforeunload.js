@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
 class Beforeunload extends React.Component {
   static propTypes = {
@@ -8,11 +8,11 @@ class Beforeunload extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener("beforeunload", this.handleBeforeunload);
+    window.addEventListener('beforeunload', this.handleBeforeunload);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("beforeunload", this.handleBeforeunload);
+    window.removeEventListener('beforeunload', this.handleBeforeunload);
   }
 
   handleBeforeunload = event => {
@@ -23,7 +23,7 @@ class Beforeunload extends React.Component {
       returnValue = onBeforeunload(event);
     }
 
-    if (typeof returnValue === "string") {
+    if (typeof returnValue === 'string') {
       event.returnValue = returnValue;
       return returnValue;
     }
