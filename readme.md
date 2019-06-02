@@ -1,6 +1,6 @@
 # react-beforeunload
 
-React component which listens to `beforeunload` on the window when mounted.
+React component and hook which listens to `beforeunload` on the window when mounted.
 
 ## Usage
 

@@ -1,7 +1,7 @@
 {
   "name": "react-beforeunload",
   "version": "2.0.0",
-  "description": "React component which listens to `beforeunload` on the window when mounted.",
+  "description": "React component and hook which listens to `beforeunload` on the window when mounted.",
   "main": "lib/index.js",
   "files": [
     "lib"
@@ -20,6 +20,7 @@
     "beforeunload",
     "component",
     "event",
+    "hook",
     "onbeforeunload",
     "react",
     "unload",
