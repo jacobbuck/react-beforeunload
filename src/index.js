@@ -16,6 +16,10 @@ export const useBeforeunload = handler => {
         returnValue = handerRef.current(event);
       }
 
+      if (event.defaultPrevented) {
+        event.returnValue = '';
+      }
+
       if (typeof returnValue === 'string') {
         event.returnValue = returnValue;
         return returnValue;
