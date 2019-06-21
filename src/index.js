@@ -2,18 +2,18 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
 export const useBeforeunload = handler => {
-  const handerRef = useRef(handler);
+  const handlerRef = useRef(handler);
 
   useEffect(() => {
-    handerRef.current = handler;
+    handlerRef.current = handler;
   }, [handler]);
 
   useEffect(() => {
     const handleBeforeunload = event => {
       let returnValue;
 
-      if (handerRef.current) {
-        returnValue = handerRef.current(event);
+      if (handlerRef.current) {
+        returnValue = handlerRef.current(event);
       }
 
       if (event.defaultPrevented) {
