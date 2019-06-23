@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
-export const useBeforeunload = handler => {
+export const useBeforeunload = (handler = () => {}) => {
   const handlerRef = useRef(handler);
 
   useEffect(() => {
