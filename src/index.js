@@ -12,7 +12,7 @@ export const useBeforeunload = handler => {
     const handleBeforeunload = event => {
       let returnValue;
 
-      if (handlerRef.current) {
+      if (typeof handlerRef.current === 'function') {
         returnValue = handlerRef.current(event);
       }
 
