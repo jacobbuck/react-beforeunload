@@ -2,6 +2,12 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
 export const useBeforeunload = (handler = () => {}) => {
+  if (process.env.NODE_ENV !== 'production' && typeof handler !== 'function') {
+    throw new TypeError(
+      `Expected "handler" to be a function, not ${typeof handler}.`
+    );
+  }
+
   const handlerRef = useRef(handler);
 
   useEffect(() => {
