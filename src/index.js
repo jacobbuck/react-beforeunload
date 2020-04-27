@@ -15,7 +15,7 @@ export const useBeforeunload = (handler = () => {}) => {
   }, [handler]);
 
   useEffect(() => {
-    const handleBeforeunload = event => {
+    const handleBeforeunload = (event) => {
       let returnValue;
 
       if (typeof handlerRef.current === 'function') {
@@ -40,7 +40,7 @@ export const useBeforeunload = (handler = () => {}) => {
   }, []);
 };
 
-export const Beforeunload = props => {
+export const Beforeunload = (props) => {
   const { children = null, onBeforeunload } = props;
 
   useBeforeunload(onBeforeunload);
