@@ -41,11 +41,12 @@ export const useBeforeunload = (handler = () => {}) => {
 };
 
 export const Beforeunload = (props) => {
-  const { children = null, onBeforeunload } = props;
+  useBeforeunload(props.onBeforeunload);
+  return props.children;
+};
 
-  useBeforeunload(onBeforeunload);
-
-  return children;
+Beforeunload.defaultProps = {
+  children: null,
 };
 
 Beforeunload.propTypes = {
