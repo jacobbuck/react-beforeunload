@@ -34,7 +34,8 @@
   },
   "homepage": "https://github.com/jacobbuck/react-beforeunload#readme",
   "dependencies": {
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "use-latest": "^1.1.0"
   },
   "peerDependencies": {
     "react": "^16.8.0"

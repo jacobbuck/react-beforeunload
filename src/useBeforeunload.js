@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import useLatest from 'use-latest';
 
 const useBeforeunload = (handler = () => {}) => {
   if (process.env.NODE_ENV !== 'production' && typeof handler !== 'function') {
@@ -7,11 +8,7 @@ const useBeforeunload = (handler = () => {}) => {
     );
   }
 
-  const handlerRef = useRef(handler);
-
-  useEffect(() => {
-    handlerRef.current = handler;
-  }, [handler]);
+  const handlerRef = useLatest(handler);
 
   useEffect(() => {
     const handleBeforeunload = (event) => {

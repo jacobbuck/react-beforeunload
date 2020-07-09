@@ -12,6 +12,6 @@ export default {
       format: 'esm',
     },
   ],
-  external: ['prop-types', 'react'],
+  external: ['prop-types', 'react', 'use-latest'],
   plugins: [babel()],
 };
