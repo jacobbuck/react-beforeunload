@@ -16,7 +16,7 @@
 
 ## v2.2.0 - 2020-04-27
 
-## Added
+### Added
 
 - Added ES Module build.
 - Added `defaultProps` to `Beforeunload` component.
@@ -77,7 +77,7 @@
 ### Fixed
 
 - Fixed rendering when no `children` are set.
-  
+
 ## v1.0.2 - 2017-07-27
 
 ### Fixed
