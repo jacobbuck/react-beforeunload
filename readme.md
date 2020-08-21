@@ -13,7 +13,7 @@ import { useBeforeunload } from 'react-beforeunload';
 Display a dialog box:
 
 ```jsx
-useBeforeunload(event => event.preventDefault());
+useBeforeunload((event) => event.preventDefault());
 ```
 
 Display a dialog box with custom message:
@@ -35,7 +35,7 @@ import { Beforeunload } from 'react-beforeunload';
 And use as you would use the hook:
 
 ```jsx
-<Beforeunload onBeforeunload={event => event.preventDefault()} />
+<Beforeunload onBeforeunload={(event) => event.preventDefault()} />
 ```
 
 ```jsx
