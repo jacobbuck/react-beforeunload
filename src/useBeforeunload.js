@@ -12,11 +12,7 @@ const useBeforeunload = (handler = () => {}) => {
 
   useEffect(() => {
     const handleBeforeunload = (event) => {
-      let returnValue;
-
-      if (typeof handlerRef.current === 'function') {
-        returnValue = handlerRef.current(event);
-      }
+      const returnValue = handlerRef.current(event);
 
       if (event.defaultPrevented) {
         event.returnValue = '';
