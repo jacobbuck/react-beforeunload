@@ -7,9 +7,7 @@ jest.mock('../useBeforeunload');
 
 test('calls useBeforeunload with onBeforeunload prop when rendered', () => {
   const handler = jest.fn();
-  const testRenderer = TestRenderer.create(
-    <Beforeunload onBeforeunload={handler} />
-  );
+  TestRenderer.create(<Beforeunload onBeforeunload={handler} />);
   expect(useBeforeunload).toHaveBeenCalledWith(handler);
 });
 
