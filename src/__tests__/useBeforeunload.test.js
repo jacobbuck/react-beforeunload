@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import useBeforeunload from '../useBeforeunload';
 
 const createBeforeunloadEvent = () =>
@@ -9,7 +9,9 @@ const renderUseBeforeunloadHook = (handler) =>
 
 test('uses default handler when not set', () => {
   const { result } = renderUseBeforeunloadHook();
-  window.dispatchEvent(createBeforeunloadEvent());
+  act(() => {
+    window.dispatchEvent(createBeforeunloadEvent());
+  });
   expect(result.error).toBeUndefined();
 });
 
@@ -24,7 +26,9 @@ test('handler function is called when beforeunload event is fired', () => {
   const handler = jest.fn();
   renderUseBeforeunloadHook(handler);
   const event = createBeforeunloadEvent();
-  window.dispatchEvent(event);
+  act(() => {
+    window.dispatchEvent(event);
+  });
   expect(handler).toHaveBeenCalledWith(event);
 });
 
@@ -37,7 +41,9 @@ test('returnValue on event is set when preventDefault is called', () => {
   // ensuring `returnValue` is set on `event`
   const set = jest.fn();
   Object.defineProperty(event, 'returnValue', { set });
-  window.dispatchEvent(event);
+  act(() => {
+    window.dispatchEvent(event);
+  });
   expect(set).toHaveBeenCalledWith('');
 });
 
@@ -48,6 +54,8 @@ test('returnValue on event is set when a string is returned by handler', () => {
   // ensuring `returnValue` is set on `event`
   const set = jest.fn();
   Object.defineProperty(event, 'returnValue', { set });
-  window.dispatchEvent(event);
+  act(() => {
+    window.dispatchEvent(event);
+  });
   expect(set).toHaveBeenCalledWith('goodbye');
 });
