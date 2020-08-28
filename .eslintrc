@@ -2,10 +2,12 @@
   "env": {
     "browser": true,
     "es6": true,
+    "jest": true,
     "node": true
   },
   "extends": [
     "eslint:recommended",
+    "plugin:jest/recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended"
   ],
@@ -14,7 +16,7 @@
     "ecmaVersion": 6,
     "sourceType": "module"
   },
-  "plugins": ["prettier", "react", "react-hooks"],
+  "plugins": ["jest", "prettier", "react", "react-hooks"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
