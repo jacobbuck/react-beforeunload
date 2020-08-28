@@ -17,7 +17,6 @@ test('renders children', () => {
       Hello <strong>World!</strong>
     </Beforeunload>
   );
-  console.log(testRenderer.toJSON());
   expect(testRenderer.toJSON()).toMatchObject([
     'Hello ',
     { type: 'strong', props: {}, children: ['World!'] },
