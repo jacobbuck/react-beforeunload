@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Updated devDependencies.
+
+### Removed
+
+- Removed redundant type-check.
+
 ## v2.2.2 - 2020-07-09
 
 ### Changed
