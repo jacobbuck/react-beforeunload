@@ -10,9 +10,11 @@ Beforeunload.defaultProps = {
   children: null,
 };
 
-Beforeunload.propTypes = {
-  children: PropTypes.any,
-  onBeforeunload: PropTypes.func.isRequired,
-};
+if (process.env.NODE_ENV !== 'production') {
+  Beforeunload.propTypes = {
+    children: PropTypes.any,
+    onBeforeunload: PropTypes.func.isRequired,
+  };
+}
 
 export default Beforeunload;
