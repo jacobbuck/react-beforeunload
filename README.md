@@ -22,7 +22,7 @@ Display a dialog box with custom message:
 useBeforeunload(() => "You'll lose your data!");
 ```
 
-> Some browsers display the returned string in the dialog box, others display a fixed message.
+> :warning: Some browsers display the returned string in the dialog box, others display a fixed message.
 
 [Source](https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload)
 
