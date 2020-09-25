@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Removed
+
+- Removed `defaultProps` in favour of default values in object destructuring.
+
 ## v2.2.4 - 2020-09-02
 
 ### Changed
