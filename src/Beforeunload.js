@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
 import useBeforeunload from './useBeforeunload';
 
-const Beforeunload = (props) => {
-  useBeforeunload(props.onBeforeunload);
-  return props.children;
-};
-
-Beforeunload.defaultProps = {
-  children: null,
+const Beforeunload = ({ children = null, onBeforeunload }) => {
+  useBeforeunload(onBeforeunload);
+  return children;
 };
 
 if (process.env.NODE_ENV !== 'production') {
