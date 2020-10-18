@@ -35,7 +35,7 @@ const useBeforeunload = (handler) => {
     return () => {
       window.removeEventListener('beforeunload', handleBeforeunload);
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
 
 export default useBeforeunload;
