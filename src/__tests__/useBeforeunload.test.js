@@ -18,7 +18,9 @@ test('uses default handler when not set', () => {
 test('throws TypeError when handler is not a function', () => {
   const { result } = renderUseBeforeunloadHook({ hello: 'world' });
   expect(result.error).toEqual(
-    TypeError('Expected "handler" to be a function, not object.')
+    new TypeError(
+      'Expected `handler` to be of type `function`, but received type `object`'
+    )
   );
 });
 
