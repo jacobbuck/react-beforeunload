@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+### Changed
+
+- Improved type-checking.
+- Updated `handler` parameter of `useBeforeunload` hook to allow [nullish values](https://developer.mozilla.org/en-US/docs/Glossary/Nullish).
+
 ### Removed
 
 - Removed `defaultProps` in favour of default values in object destructuring.
