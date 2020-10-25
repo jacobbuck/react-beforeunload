@@ -4,33 +4,19 @@ import useBeforeunload from '../useBeforeunload';
 const createBeforeunloadEvent = () =>
   new Event('beforeunload', { cancelable: true });
 
+const dispatchWindowEvent = (event) =>
+  act(() => {
+    window.dispatchEvent(event);
+  });
+
 const renderUseBeforeunloadHook = (handler) =>
   renderHook(() => useBeforeunload(handler));
-
-test('uses default handler when not set', () => {
-  const { result } = renderUseBeforeunloadHook();
-  act(() => {
-    window.dispatchEvent(createBeforeunloadEvent());
-  });
-  expect(result.error).toBeUndefined();
-});
-
-test('throws TypeError when handler is not a function', () => {
-  const { result } = renderUseBeforeunloadHook({ hello: 'world' });
-  expect(result.error).toEqual(
-    new TypeError(
-      'Expected `handler` to be of type `function`, but received type `object`'
-    )
-  );
-});
 
 test('handler function is called when beforeunload event is fired', () => {
   const handler = jest.fn();
   renderUseBeforeunloadHook(handler);
   const event = createBeforeunloadEvent();
-  act(() => {
-    window.dispatchEvent(event);
-  });
+  dispatchWindowEvent(event);
   expect(handler).toHaveBeenCalledWith(event);
 });
 
@@ -43,9 +29,7 @@ test('returnValue on event is set when preventDefault is called', () => {
   // ensuring `returnValue` is set on `event`
   const set = jest.fn();
   Object.defineProperty(event, 'returnValue', { set });
-  act(() => {
-    window.dispatchEvent(event);
-  });
+  dispatchWindowEvent(event);
   expect(set).toHaveBeenCalledWith('');
 });
 
@@ -56,8 +40,37 @@ test('returnValue on event is set when a string is returned by handler', () => {
   // ensuring `returnValue` is set on `event`
   const set = jest.fn();
   Object.defineProperty(event, 'returnValue', { set });
-  act(() => {
-    window.dispatchEvent(event);
-  });
+  dispatchWindowEvent(event);
   expect(set).toHaveBeenCalledWith('goodbye');
+});
+
+test('throws TypeError when handler is not a function', () => {
+  const { result } = renderUseBeforeunloadHook({});
+  expect(result.error).toEqual(
+    new TypeError(
+      'Expected `handler` to be of type `function`, but received type `object`'
+    )
+  );
+});
+
+test('doesn’t throw TypeError if handler is nullish', () => {
+  const { result: result1 } = renderUseBeforeunloadHook(null);
+  const { result: result2 } = renderUseBeforeunloadHook(undefined);
+
+  dispatchWindowEvent(createBeforeunloadEvent());
+
+  expect(result1.error).toBeUndefined();
+  expect(result2.error).toBeUndefined();
+});
+
+test('doesn’t typecheck in production', () => {
+  const env = process.env;
+  process.env = { NODE_ENV: 'production' };
+  const { result } = renderUseBeforeunloadHook({});
+  expect(result.error).not.toEqual(
+    new TypeError(
+      'Expected `handler` to be of type `function`, but received type `object`'
+    )
+  );
+  process.env = env;
 });
