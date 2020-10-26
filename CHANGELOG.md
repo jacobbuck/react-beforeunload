@@ -6,6 +6,7 @@
 
 - Improved type-checking.
 - Updated `handler` parameter of `useBeforeunload` hook to allow [nullish values](https://developer.mozilla.org/en-US/docs/Glossary/Nullish).
+- Updated devDependencies.
 
 ### Removed
 
