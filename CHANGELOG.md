@@ -6,6 +6,10 @@
 
 - Added source maps to build output.
 
+### Changed
+
+- Bumped up version of [use-latest](https://www.npmjs.com/package/use-latest) to v1.2.0.
+
 ## v2.3.0 - 2020-10-26
 
 ### Changed
