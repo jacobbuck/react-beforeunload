@@ -10,6 +10,7 @@
 
 - Bumped up version of [use-latest](https://www.npmjs.com/package/use-latest) to v1.2.0.
 - Updated devDependencies.
+- Updated [react](https://www.npmjs.com/package/react) peerDependency to also support v17.
 
 ## v2.3.0 - 2020-10-26
 

@@ -62,6 +62,6 @@
     "rollup": "^2.33.1"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.6.0 || ^17.0.0"
   }
 }
