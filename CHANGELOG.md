@@ -9,6 +9,7 @@
 ### Changed
 
 - Bumped up version of [use-latest](https://www.npmjs.com/package/use-latest) to v1.2.0.
+- Updated devDependencies.
 
 ## v2.3.0 - 2020-10-26
 
