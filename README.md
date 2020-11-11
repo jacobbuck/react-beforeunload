@@ -1,6 +1,6 @@
 # react-beforeunload
 
-React component and hook which listens to `beforeunload` on the window when mounted.
+React component and hook which listens to the [`beforeunload`](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event) window event.
 
 ## Usage
 
