@@ -5,7 +5,7 @@ const useBeforeunload = (handler) => {
   if (process.env.NODE_ENV !== 'production') {
     if (typeof handler !== 'function' && handler != null) {
       throw new TypeError(
-        `Expected \`handler\` to be of type \`function\`, but received type \`${typeof handler}\``
+        `Expected \`handler\` to be of type \`function\` but received type \`${typeof handler}\``
       );
     }
   }

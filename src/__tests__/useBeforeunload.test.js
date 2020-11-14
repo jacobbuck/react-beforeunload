@@ -48,7 +48,7 @@ test('throws TypeError when handler is not a function', () => {
   const { result } = renderUseBeforeunloadHook({});
   expect(result.error).toEqual(
     new TypeError(
-      'Expected `handler` to be of type `function`, but received type `object`'
+      'Expected `handler` to be of type `function` but received type `object`'
     )
   );
 });
@@ -69,7 +69,7 @@ test('doesn’t typecheck in production', () => {
   const { result } = renderUseBeforeunloadHook({});
   expect(result.error).not.toEqual(
     new TypeError(
-      'Expected `handler` to be of type `function`, but received type `object`'
+      'Expected `handler` to be of type `function` but received type `object`'
     )
   );
   process.env = env;
