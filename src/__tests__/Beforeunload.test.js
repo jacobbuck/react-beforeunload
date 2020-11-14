@@ -22,12 +22,3 @@ test('renders children', () => {
     { type: 'strong', props: {}, children: ['World!'] },
   ]);
 });
-
-test('propTypes aren’t set in production', () => {
-  const env = process.env;
-  process.env = { NODE_ENV: 'production' };
-  jest.resetModules();
-  expect(require('../Beforeunload').default).not.toHaveProperty('propTypes');
-  process.env = env;
-  jest.resetModules();
-});
