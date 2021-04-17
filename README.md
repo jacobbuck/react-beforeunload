@@ -7,48 +7,94 @@ React component and hook which listens to the [`beforeunload`](https://developer
 ### `useBeforeunload` Hook (recommended)
 
 ```jsx
+useBeforeunload(handler);
+```
+
+#### Parameters
+
+- `handler` function to be called with `BeforeUnloadEvent` when `beforeunload` event is fired.
+
+#### Example
+
+```jsx
 import { useBeforeunload } from 'react-beforeunload';
+
+const Example = (props) => {
+  const [value, setValue] = useState('');
+
+  useBeforeunload((event) => {
+    if (value !== '') {
+      event.preventDefault();
+    }
+  });
+
+  return (
+    <input onChange={(event) => setValue(event.target.value)} value={value} />
+  );
+};
 ```
-
-Display a dialog box:
-
-```jsx
-useBeforeunload((event) => event.preventDefault());
-```
-
-Display a dialog box with custom message:
-
-```jsx
-useBeforeunload(() => "You'll lose your data!");
-```
-
-> :warning: Some browsers display the returned string in the dialog box, others display a fixed message.
-
-[Source](https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload)
 
 ### `Beforeunload` Component
 
 ```jsx
+<Beforeunload onBeforeunload={handler} />
+```
+
+#### Props
+
+- `onBeforeunload` function to be called with `BeforeUnloadEvent` when `beforeunload` event is fired.
+
+#### Example
+
+```jsx
 import { Beforeunload } from 'react-beforeunload';
+
+class Example extends React.Component {
+  state = { value: '' };
+
+  render() {
+    return (
+      <>
+        {value !== '' && (
+          <Beforeunload onBeforeunload={(event) => event.preventDefault()} />
+        )}
+        <input
+          onChange={(event) => this.setState({ value: event.target.value })}
+          value={this.state.value}
+        />
+      </>
+    );
+  }
+}
 ```
 
-And use as you would use the hook:
-
-```jsx
-<Beforeunload onBeforeunload={(event) => event.preventDefault()} />
-```
-
-```jsx
-<Beforeunload onBeforeunload={() => "You'll lose your data!"} />
-```
-
-Alternatively use it as a wrapper:
+:information_source: The `Beforeunload` component will render any children passed as-is, so it can be used as a wrapper component:
 
 ```jsx
 <Beforeunload onBeforeunload={…}>
   <MyApp />
 </Beforeunload>
 ```
+
+## Custom message support
+
+To display a custom message in the triggered dialog box, return a string in the passed event handler function.
+
+With `useBeforeunload` hook:
+
+```jsx
+useBeforeunload(() => 'You’ll lose your data!');
+```
+
+With `Beforeunload` component:
+
+```jsx
+<Beforeunload onBeforeunload={() => 'You’ll lose your data!'} />
+```
+
+> :warning: Some browsers used to display the returned string in the confirmation dialog, enabling the event handler to display a custom message to the user. However, this is deprecated and no longer supported in most browsers.
+
+[Source](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event)
 
 ## Requirements
 
