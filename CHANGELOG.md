@@ -2,8 +2,14 @@
 
 ## Unreleased
 
+### Added
+
+- Added [tiny-invariant](https://www.npmjs.com/package/tiny-invariant) dependency.
+
 ### Changed
 
+- Changed type checking in `useBeforeunload` hook to use `invariant` function.
+- Updated `Beforeunload.propTypes` to only be defined in non-production environments.
 - Updated devDependencies.
 
 ## v2.4.0 - 2020-11-08
