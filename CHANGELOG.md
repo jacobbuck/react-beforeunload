@@ -28,7 +28,7 @@
 
 ### Changed
 
-- Updated `propTypes` to only be defined in non-production environments.
+- Updated `Beforeunload.propTypes` to only be defined in non-production environments.
 - Updated devDependencies.
 
 ## v2.2.3 - 2020-08-28
