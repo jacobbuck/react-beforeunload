@@ -1,14 +1,12 @@
 import { useEffect } from 'react';
+import invariant from 'tiny-invariant';
 import useLatest from 'use-latest';
 
 const useBeforeunload = (handler) => {
-  if (process.env.NODE_ENV !== 'production') {
-    if (typeof handler !== 'function' && handler != null) {
-      throw new TypeError(
-        `Expected \`handler\` to be of type \`function\` but received type \`${typeof handler}\``
-      );
-    }
-  }
+  invariant(
+    handler == null || typeof handler === 'function',
+    'Expected `handler` to be a function'
+  );
 
   const handlerRef = useLatest(handler);
 

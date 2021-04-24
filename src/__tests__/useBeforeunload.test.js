@@ -46,10 +46,8 @@ test('returnValue on event is set when a string is returned by handler', () => {
 
 test('throws TypeError when handler is not a function', () => {
   const { result } = renderUseBeforeunloadHook({});
-  expect(result.error).toEqual(
-    new TypeError(
-      'Expected `handler` to be of type `function` but received type `object`'
-    )
+  expect(result.error).toStrictEqual(
+    new Error('Invariant failed: Expected `handler` to be a function')
   );
 });
 
@@ -61,16 +59,4 @@ test('doesn’t throw TypeError if handler is nullish', () => {
 
   expect(result1.error).toBeUndefined();
   expect(result2.error).toBeUndefined();
-});
-
-test('doesn’t typecheck in production', () => {
-  const env = process.env;
-  process.env = { NODE_ENV: 'production' };
-  const { result } = renderUseBeforeunloadHook({});
-  expect(result.error).not.toEqual(
-    new TypeError(
-      'Expected `handler` to be of type `function` but received type `object`'
-    )
-  );
-  process.env = env;
 });
