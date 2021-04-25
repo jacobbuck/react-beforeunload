@@ -7,9 +7,7 @@ const useBeforeunload = (handler) => {
     handler == null || typeof handler === 'function',
     'Expected `handler` to be a function'
   );
-
   const handlerRef = useLatest(handler);
-
   useEffect(() => {
     const handleBeforeunload = (event) => {
       const returnValue = handlerRef.current?.(event);
@@ -25,9 +23,7 @@ const useBeforeunload = (handler) => {
         return (event.returnValue = '');
       }
     };
-
     window.addEventListener('beforeunload', handleBeforeunload);
-
     return () => {
       window.removeEventListener('beforeunload', handleBeforeunload);
     };
