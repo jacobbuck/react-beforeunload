@@ -13,14 +13,14 @@ const useBeforeunload = (handler) => {
   useEffect(() => {
     const handleBeforeunload = (event) => {
       const returnValue = handlerRef.current?.(event);
-
+      // Handle legacy `event.returnValue` property
+      // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
       if (typeof returnValue === 'string') {
         event.returnValue = returnValue;
         return returnValue;
       }
-
       // Chrome doesn't support `event.preventDefault()` on `BeforeUnloadEvent`,
-      // instead it requires `event.returnValue` to be set.
+      // instead it requires `event.returnValue` to be set
       // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload#browser_compatibility
       if (event.defaultPrevented) {
         event.returnValue = '';
