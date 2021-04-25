@@ -14,14 +14,14 @@ const useBeforeunload = (handler) => {
     const handleBeforeunload = (event) => {
       const returnValue = handlerRef.current?.(event);
 
-      // Chrome requires `returnValue` to be set.
-      if (event.defaultPrevented) {
-        event.returnValue = '';
-      }
-
       if (typeof returnValue === 'string') {
         event.returnValue = returnValue;
         return returnValue;
+      }
+
+      // Chrome requires `returnValue` to be set.
+      if (event.defaultPrevented) {
+        event.returnValue = '';
       }
     };
 
