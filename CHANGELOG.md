@@ -11,6 +11,7 @@
 - Changed type checking in `useBeforeunload` hook to use `invariant` function.
 - Updated `Beforeunload.propTypes` to only be defined in non-production environments.
 - Updated devDependencies.
+- Updated internal event handler to set `event.returnValue` less times.
 
 ## v2.4.0 - 2020-11-08
 
