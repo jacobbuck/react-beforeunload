@@ -19,7 +19,9 @@ const useBeforeunload = (handler) => {
         return returnValue;
       }
 
-      // Chrome requires `returnValue` to be set.
+      // Chrome doesn't support `event.preventDefault()` on `BeforeUnloadEvent`,
+      // instead it requires `event.returnValue` to be set.
+      // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload#browser_compatibility
       if (event.defaultPrevented) {
         event.returnValue = '';
       }
