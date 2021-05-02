@@ -44,14 +44,14 @@ test('returnValue on event is set when a string is returned by handler', () => {
   expect(set).toHaveBeenCalledWith('goodbye');
 });
 
-test('throws TypeError when handler is not a function', () => {
+test('throws when handler is not a function', () => {
   const { result } = renderUseBeforeunloadHook({});
   expect(result.error).toStrictEqual(
     new Error('Invariant failed: Expected `handler` to be a function')
   );
 });
 
-test('doesn’t throw TypeError if handler is nullish', () => {
+test('doesn’t throw if handler is nullish', () => {
   const { result: result1 } = renderUseBeforeunloadHook(null);
   const { result: result2 } = renderUseBeforeunloadHook(undefined);
 
