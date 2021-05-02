@@ -1,6 +1,6 @@
 {
   "name": "react-beforeunload",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "React component and hook which listens to the beforeunload window event.",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
