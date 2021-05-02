@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import invariant from 'tiny-invariant';
-import useLatest from 'use-latest';
 
 const useBeforeunload = (handler) => {
   invariant(
     handler == null || typeof handler === 'function',
     'Expected `handler` to be a function'
   );
-  const handlerRef = useLatest(handler);
+
+  const eventListenerRef = useRef();
+
   useEffect(() => {
-    const handleBeforeunload = (event) => {
-      const returnValue = handlerRef.current?.(event);
+    eventListenerRef.current = (event) => {
+      const returnValue = handler?.(event);
       // Handle legacy `event.returnValue` property
       // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
       if (typeof returnValue === 'string') {
@@ -23,9 +24,15 @@ const useBeforeunload = (handler) => {
         return (event.returnValue = '');
       }
     };
-    window.addEventListener('beforeunload', handleBeforeunload);
+  }, [handler]);
+
+  useEffect(() => {
+    const eventListener = (event) => {
+      eventListenerRef.current(event);
+    };
+    window.addEventListener('beforeunload', eventListener);
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeunload);
+      window.removeEventListener('beforeunload', eventListener);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 };
