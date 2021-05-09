@@ -16,7 +16,6 @@
 
 - Changed type checking in `useBeforeunload` hook to use `invariant` function.
 - Updated `Beforeunload.propTypes` to only be defined in non-production environments.
-- Updated devDependencies.
 - Updated internal event handler to set `event.returnValue` less times.
 
 ## v2.4.0 - 2020-11-08
@@ -27,8 +26,7 @@
 
 ### Changed
 
-- Bumped up version of [use-latest](https://www.npmjs.com/package/use-latest) to v1.2.0.
-- Updated devDependencies.
+- Updated [use-latest](https://www.npmjs.com/package/use-latest) dependency to v1.2.0.
 - Updated [react](https://www.npmjs.com/package/react) peerDependency to also support v17.
 
 ## v2.3.0 - 2020-10-26
@@ -37,7 +35,6 @@
 
 - Improved type-checking.
 - Updated `handler` parameter of `useBeforeunload` hook to allow [nullish values](https://developer.mozilla.org/en-US/docs/Glossary/Nullish).
-- Updated devDependencies.
 
 ### Removed
 
@@ -48,13 +45,8 @@
 ### Changed
 
 - Updated `Beforeunload.propTypes` to only be defined in non-production environments.
-- Updated devDependencies.
 
 ## v2.2.3 - 2020-08-28
-
-### Changed
-
-- Updated devDependencies.
 
 ### Removed
 
@@ -65,14 +57,12 @@
 ### Changed
 
 - Used [use-latest](https://www.npmjs.com/package/use-latest) for handling refs in `useBeforeunload` hook.
-- Updated devDependencies.
 
 ## v2.2.1 - 2020-05-20
 
 ### Changed
 
 - Enabled loose mode on '@babel/preset-env' to reduce build output.
-- Updated devDependencies.
 
 ## v2.2.0 - 2020-04-27
 
@@ -80,10 +70,6 @@
 
 - Added ES Module build.
 - Added `defaultProps` to `Beforeunload` component.
-
-### Changed
-
-- Updated devDependencies.
 
 ## v2.1.0 - 2019-06-23
 
@@ -124,7 +110,6 @@
 ### Changed
 
 - Builds are now done with [Rollup](http://rollupjs.org).
-- Updated devDependencies.
 
 ## v1.0.4 - 2017-08-21
 
