@@ -55,7 +55,7 @@ class Example extends React.Component {
   render() {
     return (
       <>
-        {value !== '' && (
+        {this.state.value !== '' && (
           <Beforeunload onBeforeunload={(event) => event.preventDefault()} />
         )}
         <input
