@@ -27,9 +27,7 @@ const useBeforeunload = (handler) => {
   }, [handler]);
 
   useEffect(() => {
-    const eventListener = (event) => {
-      eventListenerRef.current(event);
-    };
+    const eventListener = (event) => eventListenerRef.current(event);
     window.addEventListener('beforeunload', eventListener);
     return () => {
       window.removeEventListener('beforeunload', eventListener);
