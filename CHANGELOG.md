@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+
+- Fixed legacy dialog activation using `return "string";` method.
+
 ## v2.5.1 - 2021-05-02
 
 ### Removed
