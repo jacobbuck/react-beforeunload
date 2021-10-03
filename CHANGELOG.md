@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Fixed legacy dialog activation using `return "string";` method. (Fixes #27)
+- Fixed legacy dialog activation using `return "string";` method. (Fixes [#27](https://github.com/jacobbuck/react-beforeunload/issues/27))
 
 ## v2.5.1 - 2021-05-02
 
