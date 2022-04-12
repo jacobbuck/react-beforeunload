@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Updated [prop-types](https://www.npmjs.com/package/prop-types) dependency to v15.8.1.
+- Updated [tiny-invariant](https://www.npmjs.com/package/tiny-invariant) dependency to v1.2.0.
+- Updated [react](https://www.npmjs.com/package/react) peerDependency to support v18.
+
 ## v2.5.2 - 2021-10-03
 
 ### Fixed
@@ -33,7 +41,7 @@
 ### Changed
 
 - Updated [use-latest](https://www.npmjs.com/package/use-latest) dependency to v1.2.0.
-- Updated [react](https://www.npmjs.com/package/react) peerDependency to also support v17.
+- Updated [react](https://www.npmjs.com/package/react) peerDependency to support v17.
 
 ## v2.3.0 - 2020-10-26
 
