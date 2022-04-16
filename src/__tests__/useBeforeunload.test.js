@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { act, renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react';
 import useBeforeunload from '../useBeforeunload';
 
 const createBeforeunloadEvent = () =>
@@ -48,18 +48,15 @@ test('returnValue on event is set when a string is returned by handler', () => {
 });
 
 test('throws when handler is not a function', () => {
-  const { result } = renderUseBeforeunloadHook({});
-  expect(result.error).toStrictEqual(
+  expect(() => useBeforeunload({})).toThrow(
     new Error('Invariant failed: Expected `handler` to be a function')
   );
 });
 
 test('doesn’t throw if handler is nullish', () => {
-  const { result: result1 } = renderUseBeforeunloadHook(null);
-  const { result: result2 } = renderUseBeforeunloadHook(undefined);
-
-  dispatchWindowEvent(createBeforeunloadEvent());
-
-  expect(result1.error).toBeUndefined();
-  expect(result2.error).toBeUndefined();
+  expect(() => {
+    renderUseBeforeunloadHook(null);
+    renderUseBeforeunloadHook(undefined);
+    dispatchWindowEvent(createBeforeunloadEvent());
+  }).not.toThrow();
 });
