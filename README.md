@@ -22,11 +22,7 @@ import { useBeforeunload } from 'react-beforeunload';
 const Example = (props) => {
   const [value, setValue] = useState('');
 
-  useBeforeunload((event) => {
-    if (value !== '') {
-      event.preventDefault();
-    }
-  });
+  useBeforeunload(value !== '' && ((event) => event.preventDefault()));
 
   return (
     <input onChange={(event) => setValue(event.target.value)} value={value} />
@@ -78,6 +74,10 @@ class Example extends React.Component {
 
 ## Custom message support
 
+> :warning: Some browsers used to display the returned string in the confirmation dialog, enabling the event handler to display a custom message to the user. However, this is deprecated and no longer supported in most browsers.
+
+[Source](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event)
+
 To display a custom message in the triggered dialog box, return a string in the passed event handler function.
 
 With `useBeforeunload` hook:
@@ -91,10 +91,6 @@ With `Beforeunload` component:
 ```jsx
 <Beforeunload onBeforeunload={() => 'You’ll lose your data!'} />
 ```
-
-> :warning: Some browsers used to display the returned string in the confirmation dialog, enabling the event handler to display a custom message to the user. However, this is deprecated and no longer supported in most browsers.
-
-[Source](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event)
 
 ## Requirements
 
