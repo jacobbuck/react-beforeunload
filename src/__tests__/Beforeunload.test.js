@@ -3,7 +3,7 @@ import { createElement } from 'react';
 import { act, render } from '@testing-library/react';
 import { Beforeunload } from '../Beforeunload';
 
-test('calls useBeforeunload with onBeforeunload prop when rendered', () => {
+test('passes onBeforeunload prop to useBeforeunload hook', () => {
   const handler = jest.fn();
   render(createElement(Beforeunload, { onBeforeunload: handler }));
   const event = new Event('beforeunload', { cancelable: true });
