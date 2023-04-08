@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-const useBeforeunload = (handler) => {
+export const useBeforeunload = (handler) => {
   const handlerRef = useRef(handler);
   useEffect(() => {
     handlerRef.current = handler;
@@ -29,5 +29,3 @@ const useBeforeunload = (handler) => {
     }
   }, [hasHandler]);
 };
-
-export default useBeforeunload;

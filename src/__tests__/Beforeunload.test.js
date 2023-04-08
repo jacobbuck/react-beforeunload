@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { render } from '@testing-library/react';
-import Beforeunload from '../Beforeunload';
+import { Beforeunload } from '../Beforeunload';
 import useBeforeunload from '../useBeforeunload';
 
 jest.mock('../useBeforeunload');

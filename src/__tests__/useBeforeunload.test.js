@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { act, renderHook } from '@testing-library/react';
-import useBeforeunload from '../useBeforeunload';
+import { useBeforeunload } from '../useBeforeunload';
 
 const createBeforeunloadEvent = () =>
   new Event('beforeunload', { cancelable: true });

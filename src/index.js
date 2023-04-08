@@ -1,2 +1,2 @@
-export { default as Beforeunload } from './Beforeunload';
-export { default as useBeforeunload } from './useBeforeunload';
+export * from './Beforeunload';
+export * from './useBeforeunload';
