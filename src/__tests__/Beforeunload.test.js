@@ -1,24 +1,26 @@
-/**
- * @jest-environment jsdom
- */
-import React from 'react';
-import { render } from '@testing-library/react';
+import { jest } from '@jest/globals';
+import { createElement } from 'react';
+import { act, render } from '@testing-library/react';
 import { Beforeunload } from '../Beforeunload';
-import useBeforeunload from '../useBeforeunload';
-
-jest.mock('../useBeforeunload');
 
 test('calls useBeforeunload with onBeforeunload prop when rendered', () => {
   const handler = jest.fn();
-  render(<Beforeunload onBeforeunload={handler} />);
-  expect(useBeforeunload).toHaveBeenCalledWith(handler);
+  render(createElement(Beforeunload, { onBeforeunload: handler }));
+  const event = new Event('beforeunload', { cancelable: true });
+  act(() => {
+    window.dispatchEvent(event);
+  });
+  expect(handler).toHaveBeenCalledWith(event);
 });
 
 test('renders children', () => {
   const { container } = render(
-    <Beforeunload onBeforeunload={() => {}}>
-      Hello <strong>World!</strong>
-    </Beforeunload>
+    createElement(
+      Beforeunload,
+      { onBeforeunload: () => {} },
+      'Hello ',
+      createElement('strong', null, 'World!')
+    )
   );
   expect(container).toContainHTML('Hello <strong>World!</strong>');
 });

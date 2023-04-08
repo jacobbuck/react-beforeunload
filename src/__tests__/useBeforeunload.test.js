@@ -1,6 +1,4 @@
-/**
- * @jest-environment jsdom
- */
+import { jest } from '@jest/globals';
 import { act, renderHook } from '@testing-library/react';
 import { useBeforeunload } from '../useBeforeunload';
 
@@ -47,16 +45,15 @@ test('returnValue on event is set when a string is returned by handler', () => {
   expect(set).toHaveBeenCalledWith('goodbye');
 });
 
-test('throws when handler is not a function', () => {
-  expect(() => useBeforeunload({})).toThrow(
-    new Error('Invariant failed: Expected `handler` to be a function')
-  );
-});
-
-test('doesn’t throw if handler is nullish', () => {
+test('doesn’t throw if handler is not a function', () => {
   expect(() => {
+    renderUseBeforeunloadHook(true);
+    renderUseBeforeunloadHook(false);
     renderUseBeforeunloadHook(null);
     renderUseBeforeunloadHook(undefined);
+    renderUseBeforeunloadHook('');
+    renderUseBeforeunloadHook({});
+    renderUseBeforeunloadHook(0);
     dispatchWindowEvent(createBeforeunloadEvent());
   }).not.toThrow();
 });
