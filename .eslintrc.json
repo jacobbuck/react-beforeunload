@@ -9,11 +9,9 @@
     "eslint:recommended",
     "plugin:jest/recommended",
     "plugin:prettier/recommended",
-    "plugin:react/recommended",
     "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
-    "ecmaFeatures": { "jsx": true },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
