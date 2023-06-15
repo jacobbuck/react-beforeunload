@@ -1,31 +1,37 @@
 import { useEffect, useRef } from 'react';
 
 export const useBeforeunload = (handler) => {
+  const enabled = typeof handler === 'function';
+
+  // Persist handler in ref
   const handlerRef = useRef(handler);
   useEffect(() => {
     handlerRef.current = handler;
   });
-  const hasHandler = typeof handler === 'function';
+
   useEffect(() => {
-    if (hasHandler) {
+    if (enabled) {
       const listener = (event) => {
         const returnValue = handlerRef.current(event);
-        // Handle legacy `event.returnValue` property
-        // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
+
         if (typeof returnValue === 'string') {
+          event.preventDefault();
+          // Handle legacy `event.returnValue` and `return` activation.
+          // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event#compatibility_notes
           return (event.returnValue = returnValue);
         }
-        // Chrome doesn't support `event.preventDefault()` on `BeforeUnloadEvent`,
-        // instead it requires `event.returnValue` to be set
-        // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload#browser_compatibility
+
+        // Chrome doesn't support `event.preventDefault()` on `BeforeUnloadEvent`.
+        // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event#compatibility_notes
         if (event.defaultPrevented) {
           return (event.returnValue = '');
         }
       };
+
       window.addEventListener('beforeunload', listener);
       return () => {
         window.removeEventListener('beforeunload', listener);
       };
     }
-  }, [hasHandler]);
+  }, [enabled]);
 };
