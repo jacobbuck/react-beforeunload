@@ -1,7 +1,7 @@
 import { jest } from '@jest/globals';
 import { createElement } from 'react';
 import { act, render } from '@testing-library/react';
-import { Beforeunload } from '../Beforeunload';
+import { Beforeunload } from '..';
 
 test('passes onBeforeunload prop to useBeforeunload hook', () => {
   const handler = jest.fn();
