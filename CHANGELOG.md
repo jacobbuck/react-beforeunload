@@ -4,7 +4,7 @@
 
 ### Added
 
-- Added conditional listening in `useBeforeunload` hook.
+- Added conditional listening in `useBeforeunload` hook. (Fixes [#9](https://github.com/jacobbuck/react-beforeunload/issues/9))
 
 ### Changed
 
