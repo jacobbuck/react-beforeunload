@@ -1,5 +1,12 @@
 import { useEffect, useRef } from 'react';
 
+/**
+ * React hook that listens to `beforeunload` window event.
+ * @function
+ * @param {?function(BeforeUnloadEvent): ?string} handler - Event listener
+ *   called on `beforeunload` window event. It activates a confirmation dialog
+ *   when `event.preventDefault()` is called or a string is returned.
+ */
 export const useBeforeunload = (handler) => {
   const enabled = typeof handler === 'function';
 

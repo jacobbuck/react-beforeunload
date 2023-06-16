@@ -8,6 +8,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:jest/recommended",
+    "plugin:jsdoc/recommended",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended"
   ],
@@ -15,7 +16,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["jest", "prettier", "react", "react-hooks"],
+  "plugins": ["jest", "jsdoc", "prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true }]
   },
