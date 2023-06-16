@@ -22,7 +22,7 @@
 
 - Updated [prop-types](https://www.npmjs.com/package/prop-types) dependency to v15.8.1.
 - Updated [tiny-invariant](https://www.npmjs.com/package/tiny-invariant) dependency to v1.2.0.
-- Updated [react](https://www.npmjs.com/package/react) peerDependency to support v18.
+- Updated [react](https://www.npmjs.com/package/react) peer-dependency to support v18.
 
 ## v2.5.2 - 2021-10-03
 
@@ -57,7 +57,7 @@
 ### Changed
 
 - Updated [use-latest](https://www.npmjs.com/package/use-latest) dependency to v1.2.0.
-- Updated [react](https://www.npmjs.com/package/react) peerDependency to support v17.
+- Updated [react](https://www.npmjs.com/package/react) peer-dependency to support v17.
 
 ## v2.3.0 - 2020-10-26
 
@@ -125,7 +125,7 @@
 
 ### Changed
 
-- **BREAKING** Requires [react](https://www.npmjs.com/package/react) peerDependency to be v16.8.0 or newer.
+- **BREAKING** Requires [react](https://www.npmjs.com/package/react) peer-dependency to be v16.8.0 or newer.
 - **BREAKING** `Beforeunload` is now a named export.
 - Changed `Beforeunload` component to be functional and use hooks internally.
 
@@ -145,7 +145,7 @@
 
 ### Changed
 
-- Updated [react](https://www.npmjs.com/package/react) peerDependency to support React 16.
+- Updated [react](https://www.npmjs.com/package/react) peer-dependency to support React 16.
 
 ## v1.0.3 - 2017-07-28
 
