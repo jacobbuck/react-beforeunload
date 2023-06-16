@@ -1,5 +1,21 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Added conditional listening in `useBeforeunload` hook.
+
+### Changed
+
+- Updated `handler` parameter in `useBeforeunload` hook to be optional.
+
+### Removed
+
+- Removed type checking.
+- Removed [prop-types](https://www.npmjs.com/package/prop-types) dependency.
+- Removed [tiny-invariant](https://www.npmjs.com/package/tiny-invariant) dependency.
+
 ## v2.5.3 - 2022-04-12
 
 ### Changed
