@@ -1,6 +1,6 @@
 # react-beforeunload
 
-React component and hook which listens to the [`beforeunload`](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event) window event.
+Listen to the [`beforeunload`](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event) window event in React.
 
 ## Usage
 
@@ -12,7 +12,7 @@ useBeforeunload(handler);
 
 #### Parameters
 
-- `handler` function to be called with `BeforeUnloadEvent` when `beforeunload` event is fired.
+- `handler` optional function to be called with `BeforeUnloadEvent` when `beforeunload` event is fired.
 
 #### Example
 
@@ -22,7 +22,7 @@ import { useBeforeunload } from 'react-beforeunload';
 const Example = (props) => {
   const [value, setValue] = useState('');
 
-  useBeforeunload(value !== '' && ((event) => event.preventDefault()));
+  useBeforeunload(value !== '' ? (event) => event.preventDefault() : null);
 
   return (
     <input onChange={(event) => setValue(event.target.value)} value={value} />
